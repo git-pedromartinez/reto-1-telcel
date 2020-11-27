@@ -24,9 +24,10 @@
             </div>
         </div>
     </div>
-    <center style="margin-top: 30px;">
+    <div class="container" style="margin-top: 30px;">
         <h3>histórico de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
-    </center>
+        <h3>Se encontro un total de: <span style="color: #f5b461;"><%=total_radiobases%></span> registros.</h3>
+    </div>
     <div class="tabla-completa container" style="margin-top: 30px;">
         <table class="table table-bordered">
             <thead>
@@ -38,8 +39,34 @@
                     <th scope="col">TRAFICO</th>
                 </tr>
             </thead>
-            <tbody id="filas_tabla_completa" onload="solicitar_informacion_parcial()">
+            <tbody id="filas_tabla_completa" onload="">
+                <%for(let i=0;i<radiobases.length;i++){%>
+                    <%var radiobase=radiobases[i]%>
 
+                        <tr class="fila_tabla_completa">
+                            <th scope="row">
+                                <%=i+1%>
+                            </th>
+                            <td>
+                                <%=radiobase.RADIOBASE%>
+                            </td>
+                            <td>
+                                <%var FECHA= new Date(radiobase.FECHA)%>
+                                    <%=FECHA.getDate()+'/'+(FECHA.getMonth()+1)+'/'+FECHA.getFullYear()%>
+                            </td>
+                            <td>
+                                <%=radiobase.REGION%>
+                            </td>
+                            <%TRAFICO=radiobase.TRAFICO%>
+                                <td class="<%if(TRAFICO<=15){%>trafico_rojo<%}%>
+                                    <%if(TRAFICO>15&&TRAFICO<=40){%>trafico_naranja<%}%>
+                                    <%if(TRAFICO>40&&TRAFICO<=90){%>trafico_amarillo<%}%>
+                                    <%if(TRAFICO>=90){%>trafico_verde<%}%>
+                                    ">
+                                    <%=TRAFICO%>
+                                </td>
+                        </tr>
+                        <%}%>
             </tbody>
         </table>
     </div>

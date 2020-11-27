@@ -2,6 +2,9 @@
     var total_de_radiobases = 0;
     var vector_de_radiobases = [];
 
+    var total_de_filas_descargadas = 1000
+    var intervalo = 1000
+
     var filas_tabla_completa = document.getElementById('filas_tabla_completa')
 
     async function contar_radiobases() {
@@ -14,8 +17,9 @@
             .finally(function() {})
     }
 
-    async function crear_nueva_fila(numFila, RADIOBASE, FECHA, REGION, TRAFICO) {
+    async function crear_nueva_fila(numFila, RADIOBASE, FECHA_Completa, REGION, TRAFICO) {
         var tr = document.createElement('tr')
+        tr.className += " fila_tabla_completa";
         var th = document.createElement('th')
         th.scope = 'row'
         th.textContent = numFila
@@ -25,20 +29,38 @@
         td.textContent = RADIOBASE
         tr.appendChild(td)
         var td = document.createElement('td')
-        td.textContent = FECHA
+        var FECHA = new Date(FECHA_Completa)
+        td.textContent = FECHA.getDate() + '/' + (FECHA.getMonth() + 1) + '/' + FECHA.getFullYear()
         tr.appendChild(td)
         var td = document.createElement('td')
         td.textContent = REGION
         tr.appendChild(td)
         var td = document.createElement('td')
         td.textContent = TRAFICO
+        if (TRAFICO <= 15) {
+            td.className += " trafico_rojo";
+        }
+        if (TRAFICO > 15 && TRAFICO <= 40) {
+            td.className += " trafico_naranja";
+
+        }
+        if (TRAFICO > 40 && TRAFICO <= 90) {
+            td.className += " trafico_amarillo";
+
+        }
+        if (TRAFICO >= 90) {
+            td.className += " trafico_verde";
+
+        }
         tr.appendChild(td)
 
         filas_tabla_completa.appendChild(tr)
 
     }
 
-    async function solicitar_informacion_parcial() {
+    async function solicitar_informacion_parcial(bandera) {
+        bandera_de_peticion_radiobases = bandera
+
         function nueva_solicitud(desde, hasta) {
             var radiobases_current = []
             axios
@@ -53,21 +75,35 @@
                         const element = radiobases_current[index];
                         crear_nueva_fila(filas_tabla_completa.rows.length + 1 + index, element.RADIOBASE, element.FECHA, element.REGION, element.TRAFICO)
                     }
+                    total_de_filas_descargadas = total_de_filas_descargadas + intervalo
+                    bandera_de_peticion_radiobases = true
                 })
         }
-        var i = filas_tabla_completa.rows.length
-        var intervalo = 1000
-        while (i <= total_de_radiobases) {
 
-            nueva_solicitud(i, i + intervalo)
-            i = i + intervalo
-        }
+        var i = total_de_filas_descargadas
+
+        nueva_solicitud(i, intervalo)
     }
 
     function init() {
         contar_radiobases()
-        solicitar_informacion_parcial()
+            // solicitar_informacion_parcial()
     }
 
     window.onload = init;
+
+    var bandera_de_peticion_radiobases = true
+    window.onscroll = function() {
+        // console.log('window.scrollY', window.scrollY)
+        // console.log('window.innerHeight', window.innerHeight)
+        // console.log('filas_tabla_completa.scrollHeight', filas_tabla_completa.scrollHeight)
+        var y = window.scrollY;
+        if (y + window.innerHeight > filas_tabla_completa.scrollHeight) {
+            if (bandera_de_peticion_radiobases) {
+                solicitar_informacion_parcial(false)
+            }
+        }
+    };
+
+
 })();

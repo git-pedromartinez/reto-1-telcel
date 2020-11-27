@@ -51,3 +51,58 @@ html {
     border-radius: 8px;
     cursor: pointer;
 }
+
+.fila_tabla_completa:hover * {
+    color: white;
+    font-weight: bold;
+    background-color: rgba(128, 128, 128, 0.637);
+}
+
+.trafico_rojo {
+    color: #ec524b;
+    font-weight: bold;
+}
+
+.trafico_rojo:hover {
+    color: white;
+    background-color: #ec524b;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trafico_naranja {
+    color: #f5b461;
+    font-weight: bold;
+}
+
+.trafico_naranja:hover {
+    color: white;
+    background-color: #f5b461;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trafico_amarillo {
+    color: #fff76a;
+    background-color: rgba(128, 128, 128, 0.37);
+    font-weight: bold;
+}
+
+.trafico_amarillo:hover {
+    color: gray;
+    background-color: #fff76a;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trafico_verde {
+    color: #61b15a;
+    font-weight: bold;
+}
+
+.trafico_verde:hover {
+    color: white;
+    background-color: #61b15a;
+    font-weight: bold;
+    font-size: 1.2em;
+}
