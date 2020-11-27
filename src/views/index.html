@@ -28,22 +28,38 @@
         <h3>histórico de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
         <h3>Se encontro un total de: <span style="color: #f5b461;"><%=total_radiobases%></span> registros.</h3>
     </div>
-    <div class="tabla-completa container" style="margin-top: 30px;">
-        <table class="table table-bordered">
+    <div class="container" style="display: flex; justify-content: flex-end; align-items: center;">
+        <div style="display: flex;flex-direction: column; justify-content: flex-end; align-items: center;">
+            <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
+                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro RADIOBASE">
+                <div class="input-group-append">
+                    <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;">+</span>
+                </div>
+            </div>
+            <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
+                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro REGION">
+                <div class="input-group-append">
+                    <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" tabla-completa container " style="margin-top: 30px; ">
+        <table class="table table-bordered ">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">RADIOBASE</th>
-                    <th scope="col">FECHA</th>
-                    <th scope="col">REGION</th>
-                    <th scope="col">TRAFICO</th>
+                    <th scope="col ">#</th>
+                    <th scope="col ">RADIOBASE</th>
+                    <th scope="col ">FECHA</th>
+                    <th scope="col ">REGION</th>
+                    <th scope="col ">TRAFICO</th>
                 </tr>
             </thead>
-            <tbody id="filas_tabla_completa" onload="">
+            <tbody id="filas_tabla_completa" onload=" ">
                 <%for(let i=0;i<radiobases.length;i++){%>
                     <%var radiobase=radiobases[i]%>
 
-                        <tr class="fila_tabla_completa">
+                        <tr class="fila_tabla_completa <%=radiobase.RADIOBASE+ ' '+radiobase.REGION%>">
                             <th scope="row">
                                 <%=i+1%>
                             </th>

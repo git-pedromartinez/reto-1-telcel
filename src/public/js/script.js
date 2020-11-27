@@ -19,7 +19,9 @@
 
     async function crear_nueva_fila(numFila, RADIOBASE, FECHA_Completa, REGION, TRAFICO) {
         var tr = document.createElement('tr')
-        tr.className += " fila_tabla_completa";
+        tr.className += ` fila_tabla_completa`
+        tr.className += ` ${RADIOBASE}`
+        tr.className += ` ${REGION}`
         var th = document.createElement('th')
         th.scope = 'row'
         th.textContent = numFila
