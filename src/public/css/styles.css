@@ -1,0 +1,53 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-weight: normal;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.ver-maquetacion * {
+    border: 1px solid red;
+}
+
+.navbar-telcel {
+    background-color: #9ad3bc;
+}
+
+.navbar-telcel * {
+    color: white;
+}
+
+.navbar-telcel .navbar-telcel-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
+
+.navbar-telcel .navbar-telcel-main .titulo p {
+    font-size: 1.5em;
+}
+
+.navbar-telcel .navbar-telcel-main .opciones ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar-telcel .navbar-telcel-main .opciones ul li {
+    padding: 8px;
+    margin-left: 8px;
+}
+
+.navbar-telcel .navbar-telcel-main .opciones ul li:hover {
+    background-color: #f5b461;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}

@@ -1,0 +1,38 @@
+{
+    "name": "reto-1-telcel",
+    "version": "1.0.0",
+    "description": "reto-1-telcel",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./src/index.js",
+        "dev": "nodemon ./src/index.js",
+        "deployd_run": "pm2 start src/index.js",
+        "deployd_stop": "pm2 kill"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/git-pedromartinez/reto-1-telcel.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/git-pedromartinez/reto-1-telcel/issues"
+    },
+    "homepage": "https://github.com/git-pedromartinez/reto-1-telcel#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "convert-csv-to-json": "^1.0.0",
+        "csvtojson": "^2.0.10",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "express-session": "^1.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "memorystore": "^1.6.4",
+        "moment": "^2.29.1",
+        "mongoose": "^5.10.16",
+        "morgan": "^1.10.0",
+        "nodemon": "^2.0.6",
+        "uniqid": "^5.2.0"
+    }
+}

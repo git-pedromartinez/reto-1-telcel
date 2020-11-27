@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Examen Tecnico Telcel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+    <div class="navbar-telcel">
+        <div class="navbar-telcel-main container">
+            <div class="titulo">
+                <p>Histórico de tráfico radiobases de la red.</p>
+            </div>
+            <div class="opciones">
+                <ul>
+                    <li>Ver tabla completa</li>
+                    <li>Ver tabla agrupada</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <center style="margin-top: 30px;">
+        <h3>histórico de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
+    </center>
+    <div class="tabla-completa container" style="margin-top: 30px;">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">RADIOBASE</th>
+                    <th scope="col">FECHA</th>
+                    <th scope="col">REGION</th>
+                    <th scope="col">TRAFICO</th>
+                </tr>
+            </thead>
+            <tbody id="filas_tabla_completa" onload="solicitar_informacion_parcial()">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>
