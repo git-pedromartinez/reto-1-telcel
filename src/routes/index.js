@@ -14,6 +14,11 @@ module.exports = function(app) {
     router.get('/api/total_de_registros', radiobase.total_de_registros)
     router.get('/api/registros/:desde/:hasta', radiobase.obtener_registros)
 
+    router.get('/api/total_de_registros_agrupados', radiobase.total_de_registros_agrupados)
+    router.get('/api/registros_agruptados/:desde/:hasta', radiobase.obtener_registros_agrupados)
+
+    //test
+
     router.get("/*", (req, res) => {
         res.redirect("/");
         return;

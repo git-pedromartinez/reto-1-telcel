@@ -52,4 +52,4 @@ Parar el modo produccion
 
 # Base de datos. Mongodb. (NoSQL)
 
-La base de datos no necesita de la instalcion de algun software o base de datos local, esta conectado a un clouster basado en la nube (mongodb atlas). Es necesario el acceso a internet para poder visualizar los datos.
+La base de datos no necesita de la instalacion de algun software o base de datos local, esta conectado a un clouster basado en la nube (mongodb atlas). Es necesario el acceso a internet para poder visualizar los datos.

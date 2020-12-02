@@ -70,12 +70,26 @@ html {
     font-size: 1.2em;
 }
 
+.trafico_rojo_2 {
+    color: white;
+    background-color: #ec524b;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .trafico_naranja {
     color: #f5b461;
     font-weight: bold;
 }
 
 .trafico_naranja:hover {
+    color: white;
+    background-color: #f5b461;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trafico_naranja_2 {
     color: white;
     background-color: #f5b461;
     font-weight: bold;
@@ -95,6 +109,13 @@ html {
     font-size: 1.2em;
 }
 
+.trafico_amarillo_2{
+    color: gray;
+    background-color: #fff76a;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
 .trafico_verde {
     color: #61b15a;
     font-weight: bold;
@@ -105,4 +126,46 @@ html {
     background-color: #61b15a;
     font-weight: bold;
     font-size: 1.2em;
+}
+
+.trafico_verde_2 {
+    color: white;
+    background-color: #61b15a;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.trafico_2{
+
+}
+
+.trafico_2:hover{
+    border: 3px solid gray;
+}
+
+.trafico_3:hover{
+    border: 4px solid rgb(0, 225, 255);
+}
+.tags_filtros_radiobase {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.badge {
+    margin-left: 8px;
+}
+
+.tags_filtros_region {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.ocultar_fila {
+    display: none;
+}
+
+.mostrar_fila {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
 }

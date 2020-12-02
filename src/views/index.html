@@ -18,74 +18,110 @@
             </div>
             <div class="opciones">
                 <ul>
-                    <li>Ver tabla completa</li>
-                    <li>Ver tabla agrupada</li>
+                    <li onclick="mostarar_tablaCompleta()">Ver tabla completa</li>
+                    <li onclick="mostarar_tablaAgrupada()">Ver tabla agrupada</li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container" style="margin-top: 30px;">
-        <h3>histórico de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
-        <h3>Se encontro un total de: <span style="color: #f5b461;"><%=total_radiobases%></span> registros.</h3>
-    </div>
-    <div class="container" style="display: flex; justify-content: flex-end; align-items: center;">
-        <div style="display: flex;flex-direction: column; justify-content: flex-end; align-items: center;">
-            <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
-                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro RADIOBASE">
-                <div class="input-group-append">
-                    <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;">+</span>
+    <div class="tabla_completa_main" id="tabla_completa_main">
+        <div class="container" style="margin-top: 30px;">
+            <h3>Histórico de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
+            <h3>Se encontro un total de: <span style="color: #f5b461;"><%=total_radiobases%></span> registros.</h3>
+        </div>
+        <div class="container" style="display: flex; justify-content: flex-end; align-items: center;">
+            <div style="display: flex;flex-direction: column; justify-content: flex-end; align-items: center;">
+                <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
+                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro RADIOBASE" id="input_radiobase">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;" id="boton_filtro_radiobase">+</span>
+                    </div>
                 </div>
-            </div>
-            <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
-                <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro REGION">
-                <div class="input-group-append">
-                    <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;">+</span>
+                <div class="tags_filtros_radiobase" id="tags_filtros_radiobase">
+
+                </div>
+                <div class="input-group" style="margin-bottom: 16px;margin-left: 16px;">
+                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)" placeholder="Filtro REGION" id="input_region">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color: #ec524b; color: white;  font-weight: bold;" id="boton_filtro_region">+</span>
+                    </div>
+                </div>
+                <div class="tags_filtros_region" id="tags_filtros_region">
+
                 </div>
             </div>
         </div>
-    </div>
-    <div class=" tabla-completa container " style="margin-top: 30px; ">
-        <table class="table table-bordered ">
-            <thead>
-                <tr>
-                    <th scope="col ">#</th>
-                    <th scope="col ">RADIOBASE</th>
-                    <th scope="col ">FECHA</th>
-                    <th scope="col ">REGION</th>
-                    <th scope="col ">TRAFICO</th>
-                </tr>
-            </thead>
-            <tbody id="filas_tabla_completa" onload=" ">
-                <%for(let i=0;i<radiobases.length;i++){%>
-                    <%var radiobase=radiobases[i]%>
+        <div class=" tabla-completa container " style="margin-top: 30px; ">
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th scope="col ">#</th>
+                        <th scope="col ">RADIOBASE</th>
+                        <th scope="col ">FECHA</th>
+                        <th scope="col ">REGION</th>
+                        <th scope="col ">TRAFICO</th>
+                    </tr>
+                </thead>
+                <tbody id="filas_tabla_completa" onload=" ">
+                    <%for(let i=0;i<radiobases.length;i++){%>
+                        <%var radiobase=radiobases[i]%>
 
-                        <tr class="fila_tabla_completa <%=radiobase.RADIOBASE+ ' '+radiobase.REGION%>">
-                            <th scope="row">
-                                <%=i+1%>
-                            </th>
-                            <td>
-                                <%=radiobase.RADIOBASE%>
-                            </td>
-                            <td>
-                                <%var FECHA= new Date(radiobase.FECHA)%>
-                                    <%=FECHA.getDate()+'/'+(FECHA.getMonth()+1)+'/'+FECHA.getFullYear()%>
-                            </td>
-                            <td>
-                                <%=radiobase.REGION%>
-                            </td>
-                            <%TRAFICO=radiobase.TRAFICO%>
-                                <td class="<%if(TRAFICO<=15){%>trafico_rojo<%}%>
-                                    <%if(TRAFICO>15&&TRAFICO<=40){%>trafico_naranja<%}%>
-                                    <%if(TRAFICO>40&&TRAFICO<=90){%>trafico_amarillo<%}%>
-                                    <%if(TRAFICO>=90){%>trafico_verde<%}%>
-                                    ">
-                                    <%=TRAFICO%>
+                            <tr class="fila_tabla_completa <%=radiobase.RADIOBASE+ ' '+radiobase.REGION%>">
+                                <th scope="row">
+                                    <%=i+1%>
+                                </th>
+                                <td>
+                                    <%=radiobase.RADIOBASE%>
                                 </td>
-                        </tr>
-                        <%}%>
-            </tbody>
-        </table>
+                                <td>
+                                    <%var FECHA= new Date(radiobase.FECHA)%>
+                                        <%=FECHA.getDate()+'/'+(FECHA.getMonth()+1)+'/'+FECHA.getFullYear()%>
+                                </td>
+                                <td>
+                                    <%=radiobase.REGION%>
+                                </td>
+                                <%TRAFICO=radiobase.TRAFICO%>
+                                    <td class="<%if(TRAFICO<=15){%>trafico_rojo<%}%>
+                                        <%if(TRAFICO>15&&TRAFICO<=40){%>trafico_naranja<%}%>
+                                        <%if(TRAFICO>40&&TRAFICO<=90){%>trafico_amarillo<%}%>
+                                        <%if(TRAFICO>=90){%>trafico_verde<%}%>
+                                        ">
+                                        <%=TRAFICO%>
+                                    </td>
+                            </tr>
+                            <%}%>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <div class="tabla_agrupada_main container" id="tabla_agrupada_main" style="display: none;">
+        <div class="container">
+            <div class="container" style="margin-top: 30px;">
+                <h3>Histórico <span style="color: #ec524b;">agrupado</span> de tráfico de los últimos 30 días para distintas radiobases de la red.</h3>
+                <h3>Se encontro un total de: <span style="color: #f5b461;" id="num_tot_rad_agru"></span> registros agrupados.</h3>
+            </div>
+            <br><br>
+            <table class="table table-bordered ">
+                <thead id="cabecera_tabla_agrupada">
+                    <tr>
+                        <th scope="col "><span></span>RADIOBASE</th>
+                        <%for(let i=0;i<fechas.length;i++){%>
+                            <%var FECHA= new Date(fechas[i]._id)%>
+                            <th scope="col "><%=FECHA.getDate()+'/'+(FECHA.getMonth()+1)+'/'+FECHA.getFullYear()%></th>
+                        <%}%>
+                    </tr>
+                </thead>
+                <tbody id="filas_tabla_agrupada" onload=" ">
+                </tbody>
+            </table>
+
+            <br>
+            <button type="button" class="btn btn-info" id="btnNewQuery">Mostrar mas filas + 100</button>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
     <script src="/js/script.js"></script>
 </body>
