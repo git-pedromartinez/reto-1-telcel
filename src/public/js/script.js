@@ -258,18 +258,18 @@
                     td.textContent = ''
 
                 }
-                if (TRAFICO <= 15) {
+                else if (TRAFICO <= 15) {
                     td.className += " trafico_rojo_2";
                 }
-                if (TRAFICO > 15 && TRAFICO <= 40) {
+                else if (TRAFICO > 15 && TRAFICO <= 40) {
                     td.className += " trafico_naranja_2";
 
                 }
-                if (TRAFICO > 40 && TRAFICO <= 90) {
+                else if (TRAFICO > 40 && TRAFICO <= 90) {
                     td.className += " trafico_amarillo_2";
 
                 }
-                if (TRAFICO >= 90) {
+                else if (TRAFICO >= 90) {
                     td.className += " trafico_verde_2";
 
                 }
